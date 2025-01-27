@@ -3,9 +3,14 @@
   float: right
 }
 
+
 #content .WireTabs #_ProcessPageEditPrev,
 #content .WireTabs #_ProcessPageEditNext {
   color: #146ac5;
+  font-weight: 700;
+}
+#content .WireTabs #_ProcessPageEditFirst,
+#content .WireTabs #_ProcessPageEditLast{
   font-weight: 700;
 }
 
@@ -20,6 +25,7 @@
  * ===============================
  */
 
+.AdminThemeReno #content .WireTabs #_ProcessPageEditPrev:hover,
 .AdminThemeReno #content .WireTabs #_ProcessPageEditPrev:hover,
 .AdminThemeReno #content .WireTabs #_ProcessPageEditNext:hover {
   color: #E95372;
@@ -47,10 +53,16 @@
 .AdminThemeUikit ul#PageEditTabs li.prevLink {
   position: absolute;
   right:0;
+  display:flex;
+  justify-content: space-between;
 }
 
 .AdminThemeUikit ul#PageEditTabs li.spaceRight {
   right:80px;
+}
+
+.AdminThemeUikit ul#PageEditTabs li.doubleSpaceRight {
+  right:160px;
 }
 
 .AdminThemeUikit #content .WireTabs #_ProcessPageEditPrev:hover,
@@ -82,3 +94,9 @@ body.modal #_ProcessPageEditNext {
     display: none;
 }
 
+a#_ProcessPageEditNext.d-none,
+a#_ProcessPageEditPrev.d-none,
+a#_ProcessPageEditLast.d-none,
+a#_ProcessPageEditFirst.d-none{
+    display:none;
+}
