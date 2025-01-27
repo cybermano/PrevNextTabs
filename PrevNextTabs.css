@@ -26,6 +26,7 @@
  */
 
 .AdminThemeReno #content .WireTabs #_ProcessPageEditPrev:hover,
+.AdminThemeReno #content .WireTabs #_ProcessPageEditPrev:hover,
 .AdminThemeReno #content .WireTabs #_ProcessPageEditNext:hover {
   color: #E95372;
 }
@@ -58,6 +59,10 @@
 
 .AdminThemeUikit ul#PageEditTabs li.spaceRight {
   right:80px;
+}
+
+.AdminThemeUikit ul#PageEditTabs li.doubleSpaceRight {
+  right:160px;
 }
 
 .AdminThemeUikit #content .WireTabs #_ProcessPageEditPrev:hover,

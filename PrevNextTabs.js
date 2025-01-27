@@ -27,26 +27,50 @@ $(document).ready(function() {
 		// Section 3: Tabs
 		$('#_ProcessPageEditPrev i').removeClass('fa-spinner fa-spin').addClass('fa-angle-double-left');
 		$('#_ProcessPageEditNext i').removeClass('fa-spinner fa-spin').addClass('fa-angle-double-right');
+		$('#_ProcessPageEditLast i').removeClass('fa-spinner fa-spin').addClass('fa-arrow-right');
+		$('#_ProcessPageEditFirst i').removeClass('fa-spinner fa-spin').addClass('fa-arrow-left');
 
-		if(prev) {	
+		if(prev != 0) {	
+
 			$('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditPrev')
 			.prop('href', config.urls.admin + 'page/edit/?id='+prev)
 			.prop('title', response.prevTitle);	
-		} else {
-			$('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditPrev')
+
+		} else if (prev == 0) {
+
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditLast')
 			.prop('href', config.urls.admin + 'page/edit/?id='+last)
-			.prop('title', response.lastTitle);
+			.prop('title', response.lastTitle)
+            .removeClass('d-none');
+
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditPrev').addClass('d-none')
+
 		}
+        
+        if (first == last) {
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditFirst').addClass('d-none') 
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditLast').addClass('d-none') 
+        }
 		
-		if(next) {
+		if(next != 0) {
 			$('.prev-next-links .uk-pagination-next a, .prev-next-links .pagination-next a, #_ProcessPageEditNext')
 			.prop('href', config.urls.admin + 'page/edit/?id='+next)
 			.prop('title', response.nextTitle);
-		} else {
-			$('.prev-next-links .uk-pagination-next a, .prev-next-links .pagination-next a, #_ProcessPageEditNext')
+		} else if (next == 0) {
+
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditFirst')
 			.prop('href', config.urls.admin + 'page/edit/?id='+first)
-			.prop('title', response.firstTitle);
-		}
+			.prop('title', response.firstTitle)
+            .removeClass('d-none');            
+
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditNext').addClass('d-none')
+
+        } 
+
+        if (first == last) {
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditFirst').addClass('d-none') 
+            $('.prev-next-links .uk-pagination-previous a, .prev-next-links .pagination-previous a, #_ProcessPageEditLast').addClass('d-none') 
+        }        
 
 		$('.prev-next-links .uk-pagination-previous a').tooltip();
 		$('.prev-next-links .uk-pagination-next a').tooltip();
@@ -57,10 +81,14 @@ $(document).ready(function() {
 
 		// Prev/Next in Tabs -----
 		var nextLink = $("#_ProcessPageEditNext"),
-			prevLink = $("#_ProcessPageEditPrev");
+			prevLink = $("#_ProcessPageEditPrev"),
+			lastLink = $("#_ProcessPageEditLast"),
+			firstLink = $("#_ProcessPageEditFirst");
 
 		nextLink.tooltip();
 		prevLink.tooltip();
+		lastLink.tooltip();
+		firstLink.tooltip();
 
 	},"json");
 

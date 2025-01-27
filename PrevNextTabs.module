@@ -26,8 +26,8 @@ class PrevNextTabs extends WireData implements Module, ConfigurableModule {
 	static public function getModuleInfo() {
 		return array(
 			'title'    => 'Prev/Next Tabs',
-			'summary'  => 'Adds prev/next links (tabs) to page editor.',
-			'version'  => '016',
+			'summary'  => 'Adds prev/next and first/last links (tabs) to page editor.',
+			'version'  => '018',
 			'author'   => 'Macrura',
 			'autoload' => true
 		);
@@ -166,8 +166,12 @@ class PrevNextTabs extends WireData implements Module, ConfigurableModule {
 		$pnTabs = array();
 
 		$label = $this->_('Next');
+		$labelLast = $this->_('Last');
+		$labelFirst = $this->_('First');
 		$id = $this->className() . 'Next';
 		$a = "<a id='_ProcessPageEditNext' class='' target='_top' href='#' title='Loading...' data-action='this'>$label <i class='fa fa-spinner fa-spin'></i></a>"; 
+		$a .= "<a id='_ProcessPageEditLast' class='d-none' target='_top' href='' title='Loading...' data-action='this'>$labelLast <i class='fa fa-spinner fa-spin'></i></a>"; 
+        $a .= "<a id='_ProcessPageEditFirst' class='d-none' target='_top' href='' title='Loading...' data-action='this'><i class='fa fa-spinner fa-spin'></i> $labelFirst</a>";
 		$pnTabs[$id] = $a;
 
 		$label = $this->_('Prev');
